@@ -314,6 +314,11 @@ void FlorusAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuffer&
     }
 }
 
+float FlorusAudioProcessor::lin_interp(float inSampleX, float inSampleY, float inFloatPhase)
+{
+    return (1 - inFloatPhase) * inSampleX + inFloatPhase * inSampleY;
+}
+
 //==============================================================================
 bool FlorusAudioProcessor::hasEditor() const
 {
@@ -331,7 +336,7 @@ void FlorusAudioProcessor::getStateInformation (MemoryBlock& destData)
     // You should use this method to store your parameters in the memory block.
     // You could do that either as raw data, or use the XML or ValueTree classes
     // as intermediaries to make it easy to save and load complex data.
-    std::unique_ptr<XmlElement> xml(new XmlElement("FlangerChorus"));
+    std::unique_ptr<XmlElement> xml(new XmlElement("Florus"));
     
     xml->setAttribute("DryWet", *mDryWetParameter);
     xml->setAttribute("Depth", *mDepthParameter);
@@ -349,7 +354,7 @@ void FlorusAudioProcessor::setStateInformation (const void* data, int sizeInByte
     // whose contents will have been created by the getStateInformation() call.
     std::unique_ptr<XmlElement> xml(getXmlFromBinary(data, sizeInBytes));
     
-    if (xml.get() != nullptr && xml->hasTagName("FlangerChorus")){
+    if (xml.get() != nullptr && xml->hasTagName("Florus")){
         *mDryWetParameter = xml->getDoubleAttribute("DryWet");
         *mDepthParameter = xml->getDoubleAttribute("Depth");
         *mRateParameter = xml->getDoubleAttribute("Rate");
