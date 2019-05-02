@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="SZREWX" name="Florus" projectType="audioplug" jucerVersion="5.4.3">
+<JUCERPROJECT id="SZREWX" name="Florus" projectType="audioplug" jucerVersion="5.4.3"
+              companyName="Artisanal Computing" companyWebsite="artisanalcomputing.io"
+              companyEmail="artisanalcomputing@gmail.com" version="0.1.0">
   <MAINGROUP id="N0nD7C" name="Florus">
     <GROUP id="{765D4330-C7EB-E3CF-1E9C-724F93AD8693}" name="Source">
       <FILE id="YJXlld" name="PluginProcessor.cpp" compile="1" resource="0"
